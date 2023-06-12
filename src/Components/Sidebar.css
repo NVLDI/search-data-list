@@ -1,0 +1,9 @@
+.Mysidebar{
+    position: sticky;
+    background:linear-gradient(90deg,rgb(55, 55, 55)0%,rgba(60, 65, 70,6)100%);
+    top: 50px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+    object-fit: fill;
+    position: fixed;
+}

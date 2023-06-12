@@ -1,0 +1,9 @@
+.container {
+    text-align: left;
+    margin-left: 90px;
+  }
+.Table-Container{
+    justify-content: center;
+    align-items: center;
+    width: 98%;
+  }
