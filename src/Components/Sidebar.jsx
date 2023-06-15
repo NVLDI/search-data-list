@@ -13,39 +13,75 @@ export default function Sidebar() {
         navigate('/'+selected)
     }}
     className="Mysidebar"> 
-
+    <SideNav.Toggle />
 <SideNav.Nav defaultSelected="home">
-       
         <NavItem eventKey="product">
             <NavIcon>
-            <i class="fa-solid fa-magnifying-glass" style={{ fontSize: '1.5em' }}></i>
+            <i class="fa-solid fa-h" style={{ fontSize: '1.5em' }}></i>
             </NavIcon>
             <NavText>
-                Search Customer Data
+                Hyderabad
             </NavText>
             <NavItem eventKey="hyderabad">
             <NavText>
                 Hyderabad
             </NavText>
             </NavItem> 
+            <NavItem eventKey="OnlineData">
+            <NavText>
+                OnlineData
+            </NavText>
+            </NavItem> 
+        </NavItem>
+        <NavItem eventKey="product1">
+        <NavIcon>
+            <i class="fa-solid fa-k" style={{ fontSize: '1.5em' }}></i>
+            </NavIcon>
+            <NavText>
+                Karnataka
+            </NavText>
             <NavItem eventKey="karnataka">
             <NavText>
                 Karnataka
             </NavText>
             </NavItem> 
-            <NavItem eventKey="maharashtra">
+        </NavItem>
+        <NavItem eventKey="product2">
+        <NavIcon>
+            <i class="fa-solid fa-m" style={{ fontSize: '1.5em' }}></i>
+            </NavIcon>
             <NavText>
-                Maharashtra
+            Maharashtra
+            </NavText>
+            <NavItem eventKey="Maharashtra">
+            <NavText>
+            Maharashtra
             </NavText>
             </NavItem> 
-            <NavItem eventKey="tamilNadu">
+        </NavItem>
+        <NavItem eventKey="product3">
+        <NavIcon>
+            <i class="fa-solid fa-t" style={{ fontSize: '1.5em' }}></i>
+            </NavIcon>
             <NavText>
-                Tamil Nadu
+            Tamil Nadu
+            </NavText>
+            <NavItem eventKey="tamilnadu">
+            <NavText>
+            Tamil Nadu
             </NavText>
             </NavItem> 
-            <NavItem eventKey="ExcelData">
+        </NavItem>
+        <NavItem eventKey="product4">
+        <NavIcon>
+            <i class="fa-solid fa-table" style={{ fontSize: '1.5em' }}></i>
+            </NavIcon>
             <NavText>
-                ExcelData
+            Excel Data
+            </NavText>
+            <NavItem eventKey="exceldata">
+            <NavText>
+            Excel Data
             </NavText>
             </NavItem> 
         </NavItem>

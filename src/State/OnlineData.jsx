@@ -39,7 +39,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-export default function Maharashtra() {
+export default function OnlineData() {
   const [searchCount, setSearchCount] = useState('');
   const [searchValue, setSearchValue] = useState('');
   const [attributeName, setAttributeName] = useState('');
@@ -48,7 +48,7 @@ export default function Maharashtra() {
     const handleSearch = (e) => {
       e.preventDefault();
       const params = {
-        TableName: 'MH-Data',
+        TableName: 'Online-Data',
         KeyConditionExpression: `${attributeName} = :value`,
         ExpressionAttributeValues: {
           ':value': searchValue
@@ -64,7 +64,7 @@ export default function Maharashtra() {
     };
     const handleSearchAll = () => {
       const params = {
-        TableName: 'MH-Data',
+        TableName: 'Online-Data',
         Limit: parseInt(searchCount, 10) // Convert searchValue to an integer
       };
   
@@ -81,7 +81,7 @@ export default function Maharashtra() {
     <TopBar/>
     <Sidebar/>
     <div className='container'>
-            <h1>Maharashtra Search Engine</h1>
+            <h1>Hyderabad Online Search Engine</h1>
             <Box
       component="form"
       sx={{
@@ -104,24 +104,33 @@ export default function Maharashtra() {
       <Table aria-label="simple table" >
       <TableHead >
           <TableRow>
-
+          <StyledTableCell style={{ width: 160 }}>Operator</StyledTableCell>
             <StyledTableCell style={{ width: 160 }}>Mobile</StyledTableCell>
             <StyledTableCell style={{ width: 160 }}>CName</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>DOA</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>Full Name</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>EMail</StyledTableCell>
             <StyledTableCell style={{ width: 160 }}>Address</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>Provider</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>Address1</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>Address2</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>Address3</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>Address4</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>Address5</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>State</StyledTableCell>
             </TableRow>
       </TableHead>
         <TableBody >
         {tableData.map((item, index) => (
             <StyledTableRow key={index}>
+                <StyledTableCell>{item.operator}</StyledTableCell>
               <StyledTableCell>{item.mobile}</StyledTableCell>
               <StyledTableCell>{item.cname}</StyledTableCell>
-              <StyledTableCell>{item.doa}</StyledTableCell>
-              <StyledTableCell>{item.fname}</StyledTableCell>
+              <StyledTableCell>{item.email}</StyledTableCell>
               <StyledTableCell>{item.address}</StyledTableCell>
-              <StyledTableCell>{item.provider}</StyledTableCell>
+              <StyledTableCell>{item.address1}</StyledTableCell>
+              <StyledTableCell>{item.address2}</StyledTableCell>
+              <StyledTableCell>{item.address3}</StyledTableCell>
+              <StyledTableCell>{item.address4}</StyledTableCell>
+              <StyledTableCell>{item.address5}</StyledTableCell>
+              <StyledTableCell>{item.state}</StyledTableCell>
             </StyledTableRow>
           ))}
           </TableBody>
