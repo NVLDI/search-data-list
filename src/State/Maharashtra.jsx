@@ -110,7 +110,6 @@ export default function Maharashtra() {
             <StyledTableCell style={{ width: 160 }}>DOA</StyledTableCell>
             <StyledTableCell style={{ width: 160 }}>Full Name</StyledTableCell>
             <StyledTableCell style={{ width: 160 }}>Address</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>Provider</StyledTableCell>
             </TableRow>
       </TableHead>
         <TableBody >
@@ -121,7 +120,6 @@ export default function Maharashtra() {
               <StyledTableCell>{item.doa}</StyledTableCell>
               <StyledTableCell>{item.fname}</StyledTableCell>
               <StyledTableCell>{item.address}</StyledTableCell>
-              <StyledTableCell>{item.provider}</StyledTableCell>
             </StyledTableRow>
           ))}
           </TableBody>

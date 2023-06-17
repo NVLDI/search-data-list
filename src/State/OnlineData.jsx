@@ -104,7 +104,6 @@ export default function OnlineData() {
       <Table aria-label="simple table" >
       <TableHead >
           <TableRow>
-          <StyledTableCell style={{ width: 160 }}>Operator</StyledTableCell>
             <StyledTableCell style={{ width: 160 }}>Mobile</StyledTableCell>
             <StyledTableCell style={{ width: 160 }}>CName</StyledTableCell>
             <StyledTableCell style={{ width: 160 }}>EMail</StyledTableCell>
@@ -120,7 +119,6 @@ export default function OnlineData() {
         <TableBody >
         {tableData.map((item, index) => (
             <StyledTableRow key={index}>
-                <StyledTableCell>{item.operator}</StyledTableCell>
               <StyledTableCell>{item.mobile}</StyledTableCell>
               <StyledTableCell>{item.cname}</StyledTableCell>
               <StyledTableCell>{item.email}</StyledTableCell>

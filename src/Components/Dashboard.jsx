@@ -9,8 +9,8 @@ export default function Dashboard() {
         <Sidebar/>
         <div className='container1'>
          <h1>Welcome to My Website</h1>
-      <p>This is the welcome page of my Search Engine. </p>
-      <p>Use search icon to select list of State</p>
+      <h2>This is the welcome page of my Search Engine. For this moment we have activated the following search engine</h2>
+      <h3>Maharashtra Search Engine</h3><h3> Hyderabad Online Search Engine</h3>
      <p>Feel free to explore and enjoy your stay!</p>
     </div>
     </div>
