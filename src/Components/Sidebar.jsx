@@ -32,6 +32,12 @@ export default function Sidebar() {
                 OnlineData
             </NavText>
             </NavItem> 
+            <NavItem eventKey="New2020-Hyderabad">
+            <NavText>
+                New2020-Hyderabad
+            </NavText>
+            </NavItem> 
+            
         </NavItem>
         <NavItem eventKey="product1">
         <NavIcon>

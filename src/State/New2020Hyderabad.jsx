@@ -36,7 +36,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     border: 0,
   },
 }));
-export default function Hyderabad() {
+export default function New2020Hyderabad() {
   const [searchCount, setSearchCount] = useState('');
   const [searchValue, setSearchValue] = useState('');
   const [attributeName, setAttributeName] = useState('');
@@ -45,7 +45,7 @@ export default function Hyderabad() {
     const handleSearch = (e) => {
       e.preventDefault();
       const params = {
-        TableName: 'HY-Data',
+        TableName: '2020-HY-Data',
         KeyConditionExpression: `${attributeName} = :value`,
         ExpressionAttributeValues: {
           ':value': searchValue
@@ -62,7 +62,7 @@ export default function Hyderabad() {
     };
     const handleSearchAll = () => {
       const params = {
-        TableName: 'HY-Data',
+        TableName: '2020-HY-Data',
         Limit: parseInt(searchCount, 10)
       };
   
@@ -80,7 +80,7 @@ export default function Hyderabad() {
         <TopBar/>
         <Sidebar/>
         <div className='container'>
-            <h1>Hyderabad Search Engine</h1>
+            <h1>New-2020 Hyderabad Search Engine</h1>
             <Box
       component="form"
       sx={{
@@ -104,40 +104,40 @@ export default function Hyderabad() {
       <TableHead >
           <TableRow>
             <StyledTableCell style={{ width: 160 }}>Mobile</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>CType</StyledTableCell>
             <StyledTableCell style={{ width: 160 }}>CName</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>Age</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>District</StyledTableCell>
             <StyledTableCell style={{ width: 160 }}>D.O.B</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>D.O.A</StyledTableCell>
             <StyledTableCell style={{ width: 160 }}>FName</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>H.No</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>HouseHold ID</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>Mandal</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>Nominee Name</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>Nominee Age</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>Nominee Relation</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>Street</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>UID-Number</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>Village</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>Gender</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>Address</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>Address 2</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>Email</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>GST</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>ID</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>Alter No</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>State</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>Source</StyledTableCell>
             </TableRow>
       </TableHead>
         <TableBody >
         {tableData.map((item, index) => (
             <StyledTableRow key={index}>
-              <StyledTableCell>{item.MOBILE}</StyledTableCell>
-              <StyledTableCell>{item.CNAME}</StyledTableCell>
-              <StyledTableCell>{item.AGE}</StyledTableCell>
-              <StyledTableCell>{item.DISTRICT}</StyledTableCell>
-              <StyledTableCell>{item.DOB_DT}</StyledTableCell>
-              <StyledTableCell>{item.FNAME}</StyledTableCell>
-              <StyledTableCell>{item.HNO}</StyledTableCell>
-              <StyledTableCell>{item.HOUSEHOLD_ID}</StyledTableCell>
-              <StyledTableCell>{item.MANDAL}</StyledTableCell>
-              <StyledTableCell>{item.NOMINEE_NAME}</StyledTableCell>
-              <StyledTableCell>{item.NOMINEE_AGE}</StyledTableCell>
-              <StyledTableCell>{item.NOMINEE_RELATION}</StyledTableCell>
-              <StyledTableCell>{item.STREET}</StyledTableCell>
-              <StyledTableCell>{item.UID_NUM}</StyledTableCell>
-              <StyledTableCell>{item.VILLAGE}</StyledTableCell>
+              <StyledTableCell>{item.mobile}</StyledTableCell>
+              <StyledTableCell>{item.ctype}</StyledTableCell>
+              <StyledTableCell>{item.cname}</StyledTableCell>
+              <StyledTableCell>{item.dob}</StyledTableCell>
+              <StyledTableCell>{item.doa}</StyledTableCell>
+              <StyledTableCell>{item.fname}</StyledTableCell>
+              <StyledTableCell>{item.gender}</StyledTableCell>
+              <StyledTableCell>{item.address}</StyledTableCell>
+              <StyledTableCell>{item.add2}</StyledTableCell>
+              <StyledTableCell>{item.email}</StyledTableCell>
+              <StyledTableCell>{item.gst}</StyledTableCell>
+              <StyledTableCell>{item.id}</StyledTableCell>
+              <StyledTableCell>{item.altno}</StyledTableCell>
+              <StyledTableCell>{item.state}</StyledTableCell>
+              <StyledTableCell>{item.source}</StyledTableCell>
             </StyledTableRow>
           ))}
           </TableBody>
@@ -148,3 +148,4 @@ export default function Hyderabad() {
     </div>
   )
 }
+
