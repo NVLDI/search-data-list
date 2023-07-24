@@ -6,6 +6,7 @@ import MA from './State/Maharashtra'
 import KA from './State/Karnataka'
 import HY from './State/Hyderabad'
 import ON from './State/OnlineData'
+import TN_Data from './State/TamilNadu_Data'
 import New2020HY from './State/New2020Hyderabad'
 import {BrowserRouter as Router,Route,Routes} from "react-router-dom";
 import {Amplify} from 'aws-amplify';
@@ -26,6 +27,7 @@ function App() {
                 <Route exact path="/karnataka" element={<KA/>}/>
                 <Route exact path="/onlinedata" element={<ON/>}/>
                 <Route exact path="/New2020-Hyderabad" element={<New2020HY/>}/>
+                <Route exact path="/tamilnadudata" element={<TN_Data/>}/>
             </Routes>
       </Router>
       </div>

@@ -46,7 +46,7 @@ export default function Karnataka() {
     const handleSearch = (e) => {
       e.preventDefault();
       const params = {
-        TableName: '',
+        TableName: 'KA-Data',
         KeyConditionExpression: `${attributeName} = :value`,
         ExpressionAttributeValues: {
           ':value': searchValue
@@ -63,7 +63,7 @@ export default function Karnataka() {
     };
     const handleSearchAll = () => {
       const params = {
-        TableName: '',
+        TableName: 'KA-Data',
         Limit: parseInt(searchCount, 10)
       };
   
@@ -104,12 +104,14 @@ export default function Karnataka() {
       <Table aria-label="simple table" >
       <TableHead >
           <TableRow>
-            <StyledTableCell style={{ width: 160 }}>State</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>Source</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>mobile</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>DOA</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>CType</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>CName</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>Mobile</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>Customer Name</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>Full Name</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>DOB</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>Address</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>Per.Address</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>Altno</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>Email</StyledTableCell>
             </TableRow>
       </TableHead>
         <TableBody >
@@ -117,10 +119,12 @@ export default function Karnataka() {
             <StyledTableRow key={index}>
               <StyledTableCell>{item.mobile}</StyledTableCell>
               <StyledTableCell>{item.cname}</StyledTableCell>
-              <StyledTableCell>{item.doa}</StyledTableCell>
               <StyledTableCell>{item.fname}</StyledTableCell>
+              <StyledTableCell>{item.dob}</StyledTableCell>
               <StyledTableCell>{item.address}</StyledTableCell>
-              <StyledTableCell>{item.provider}</StyledTableCell>
+              <StyledTableCell>{item.paddress}</StyledTableCell>
+              <StyledTableCell>{item.altno}</StyledTableCell>
+              <StyledTableCell>{item.email}</StyledTableCell>
             </StyledTableRow>
           ))}
           </TableBody>

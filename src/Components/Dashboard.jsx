@@ -9,12 +9,8 @@ export default function Dashboard() {
         <Sidebar/>
         <div className='container1'>
          <h1>Welcome to My Website</h1>
-      <h2>This is the welcome page of my Search Engine. For this moment we have activated the following search engine</h2>
-      <h3>Maharashtra Search Engine, Hyderabad Online Search Engine</h3>
-      <h2>Latest Update!!!!!</h2>
-      <h3>Hyderabad Search Engine, New2020 Hyderabad Online Search Engine</h3>
-      <h2>Upcoming Update!!!!!</h2>
-      <h3>Karnataka Search Engine ,Lately Tamil-Nadu Search Engine</h3>
+      <h2>This is the welcome page of my Search Engine.</h2>
+      <h3>Final Update will be search using Customer Name, City, Mobile, with sub attributes will be given in drop down list and all possible ways</h3>
      <p>Feel free to explore and enjoy your stay!</p>
     </div>
     </div>
