@@ -14,6 +14,10 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import AWS from 'aws-sdk';
 import Button from '@mui/material/Button';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 AWS.config.update({
   accessKeyId: 'AKIAZQ6GO2YKP2WF74FF',
@@ -90,8 +94,20 @@ export default function Maharashtra() {
       noValidate
       autoComplete="off"
     >
-      <TextField id="outlined-basic" label="Attribute Name" size="small" variant="outlined"  value={attributeName}
-        onChange={(e) => setAttributeName(e.target.value)}/>
+      <FormControl fullWidth>
+      <InputLabel id="demo-simple-select-label" size="small">Attribute</InputLabel>
+       <Select
+    labelId="demo-simple-select-label"
+    id="demo-simple-select"
+    value={attributeName}
+    size="small"
+    label='Attribute'
+    onChange={(e) => setAttributeName(e.target.value)}
+  >
+    <MenuItem value='mobile'>Mobile</MenuItem>
+    <MenuItem value='cname'>Name</MenuItem>
+  </Select>
+  </FormControl>
       <TextField id="outlined-basic" label="Search Here" size="small" variant="outlined" value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}/>
         <Button variant="contained" onClick={handleSearch}>Search</Button>

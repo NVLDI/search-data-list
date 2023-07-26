@@ -14,6 +14,12 @@ import './State.css'
 import { styled } from '@mui/material/styles';
 import AWS from 'aws-sdk';
 import Button from '@mui/material/Button';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+
+
 AWS.config.update({
   accessKeyId: 'AKIAZQ6GO2YKP2WF74FF',
   secretAccessKey: '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',
@@ -112,8 +118,22 @@ export default function TamilNadu_Data() {
       noValidate
       autoComplete="off"
     >
-        <TextField id="outlined-basic" label="Attribute Name" size="small" variant="outlined"  value={attributeName}
-        onChange={(e) => setAttributeName(e.target.value)}/>
+        <FormControl fullWidth>
+      <InputLabel id="demo-simple-select-label" size="small">Attribute</InputLabel>
+       <Select
+    labelId="demo-simple-select-label"
+    id="demo-simple-select"
+    value={attributeName}
+    size="small"
+    label='Attribute'
+    onChange={(e) => setAttributeName(e.target.value)}
+  >
+    <MenuItem value='mobile'>Mobile</MenuItem>
+    <MenuItem value='cname'>Name</MenuItem>
+    <MenuItem value='age'>Age</MenuItem>
+    <MenuItem value='adr'>Voter ID</MenuItem>
+  </Select>
+  </FormControl>
       <TextField id="outlined-basic" label="Search Here" size="small" variant="outlined" value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}/>
         <Button variant="contained" onClick={handleSearch}>Search</Button>
