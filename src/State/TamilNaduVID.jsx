@@ -18,31 +18,31 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-
 AWS.config.update({
-  accessKeyId: 'AKIAZQ6GO2YKP2WF74FF',
-  secretAccessKey: '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',
-  region: 'ap-south-1'
-});
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
-  },
-}));
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  '&:nth-of-type(odd)': {
-    backgroundColor: theme.palette.action.hover,
-  },
-  '&:last-child td, &:last-child th': {
-    border: 0,
-  },
-}));
-export default function Hyderabad() {
-  const [searchCount, setSearchCount] = useState('');
+    accessKeyId: 'AKIAZQ6GO2YKP2WF74FF',
+    secretAccessKey: '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',
+    region: 'ap-south-1'
+  });
+  const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+      backgroundColor: theme.palette.common.black,
+      color: theme.palette.common.white,
+    },
+    [`&.${tableCellClasses.body}`]: {
+      fontSize: 14,
+    },
+  }));
+  const StyledTableRow = styled(TableRow)(({ theme }) => ({
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.action.hover,
+    },
+    '&:last-child td, &:last-child th': {
+      border: 0,
+    },
+  }));
+export default function 
+() {
+    const [searchCount, setSearchCount] = useState('');
   const [searchValue, setSearchValue] = useState('');
   const [attributeName, setAttributeName] = useState('');
   const [tableData, setTableData] = useState([]);
@@ -50,7 +50,7 @@ export default function Hyderabad() {
     const handleSearch = (e) => {
       e.preventDefault();
       const params = {
-        TableName: 'HY-Data',
+        TableName: 'TN-Data-VID',
         KeyConditionExpression: `${attributeName} = :value`,
         ExpressionAttributeValues: {
           ':value': searchValue
@@ -67,7 +67,7 @@ export default function Hyderabad() {
     };
     const handleSearchAll = () => {
       const params = {
-        TableName: 'HY-Data',
+        TableName: 'TN-Data-VID',
         Limit: parseInt(searchCount, 10)
       };
   
@@ -82,10 +82,10 @@ export default function Hyderabad() {
     };
   return (
     <div>
-        <TopBar/>
+         <TopBar/>
         <Sidebar/>
         <div className='container'>
-            <h1>Hyderabad Search Engine</h1>
+            <h1>TamilNadu VID Data Search Engine</h1>
             <Box
       component="form"
       sx={{
@@ -104,11 +104,10 @@ export default function Hyderabad() {
     label='Attribute'
     onChange={(e) => setAttributeName(e.target.value)}
   >
-    <MenuItem value='MOBILE'>Mobile</MenuItem>
-    <MenuItem value='CNAME'>Name</MenuItem>
-    <MenuItem value='STREET'>Street</MenuItem>
-    <MenuItem value='UID_NUM'>UID</MenuItem>
-    <MenuItem value='VILLAGE'>Village</MenuItem>
+    <MenuItem value='mobile'>Mobile</MenuItem>
+    <MenuItem value='cname'>Name</MenuItem>
+    <MenuItem value='fname'>Father Name</MenuItem>
+    <MenuItem value='adr'>Voter ID</MenuItem>
   </Select>
   </FormControl>
       <TextField id="outlined-basic" label="Search Here" size="small" variant="outlined" value={searchValue}
@@ -124,40 +123,28 @@ export default function Hyderabad() {
       <TableHead >
           <TableRow>
             <StyledTableCell style={{ width: 160 }}>Mobile</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>CName</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>Customer Name</StyledTableCell>
             <StyledTableCell style={{ width: 160 }}>Age</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>District</StyledTableCell>
             <StyledTableCell style={{ width: 160 }}>D.O.B</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>FName</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>H.No</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>HouseHold ID</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>Mandal</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>Nominee Name</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>Nominee Age</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>Nominee Relation</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>Street</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>UID-Number</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>Village</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>Father Name</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>Gender</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>Address 1</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>Address 2</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>Voter-ID</StyledTableCell>
             </TableRow>
       </TableHead>
         <TableBody >
         {tableData.map((item, index) => (
             <StyledTableRow key={index}>
-              <StyledTableCell>{item.MOBILE}</StyledTableCell>
-              <StyledTableCell>{item.CNAME}</StyledTableCell>
-              <StyledTableCell>{item.AGE}</StyledTableCell>
-              <StyledTableCell>{item.DISTRICT}</StyledTableCell>
-              <StyledTableCell>{item.DOB_DT}</StyledTableCell>
-              <StyledTableCell>{item.FNAME}</StyledTableCell>
-              <StyledTableCell>{item.HNO}</StyledTableCell>
-              <StyledTableCell>{item.HOUSEHOLD_ID}</StyledTableCell>
-              <StyledTableCell>{item.MANDAL}</StyledTableCell>
-              <StyledTableCell>{item.NOMINEE_NAME}</StyledTableCell>
-              <StyledTableCell>{item.NOMINEE_AGE}</StyledTableCell>
-              <StyledTableCell>{item.NOMINEE_RELATION}</StyledTableCell>
-              <StyledTableCell>{item.STREET}</StyledTableCell>
-              <StyledTableCell>{item.UID_NUM}</StyledTableCell>
-              <StyledTableCell>{item.VILLAGE}</StyledTableCell>
+              <StyledTableCell>{item.mobile}</StyledTableCell>
+              <StyledTableCell>{item.cname}</StyledTableCell>
+              <StyledTableCell>{item.age}</StyledTableCell>
+              <StyledTableCell>{item.dob}</StyledTableCell>
+              <StyledTableCell>{item.fname}</StyledTableCell>
+              <StyledTableCell>{item.gender}</StyledTableCell>
+              <StyledTableCell>{item.c_house_no}</StyledTableCell>
+              <StyledTableCell>{item.c_house_no_v1}</StyledTableCell>
+              <StyledTableCell>{item.adr}</StyledTableCell>
             </StyledTableRow>
           ))}
           </TableBody>
