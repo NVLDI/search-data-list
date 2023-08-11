@@ -18,6 +18,9 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
 AWS.config.update({
   accessKeyId: 'AKIAZQ6GO2YKP2WF74FF',
   secretAccessKey: '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',
@@ -86,6 +89,22 @@ export default function Karnataka() {
         <Sidebar/>
         <div className='container'>
             <h1>Karnataka Search Engine</h1>
+            <RadioGroup
+        row
+        aria-labelledby="demo-row-radio-buttons-group-label"
+        name="row-radio-buttons-group"
+      >
+        <FormControlLabel value="adr1" control={<Radio />} label="Mobile" />
+        <FormControlLabel value="adr2" control={<Radio />} label="Customer Name & Address" />
+        <FormControlLabel value="adr3" control={<Radio />} label="Customer Name & Per.Address" />
+        <FormControlLabel value="adr3" control={<Radio />} label="Customer Name & DOB" />
+        <FormControlLabel value="adr3" control={<Radio />} label="Customer Name & Father's Name" />
+        <FormControlLabel value="adr3" control={<Radio />} label="Customer Alternative No" />
+        <FormControlLabel value="adr5" control={<Radio />} label="E-Mail" />
+        <FormControlLabel value="adr4" control={<Radio />} label="PAN Voter & Aadhar" />
+        <FormControlLabel value="adr1" control={<Radio />} label="Pin Code" />
+        <FormControlLabel value="adr7" control={<Radio />} label="District & Taluk or Village" />
+      </RadioGroup>
             <Box
       component="form"
       sx={{
@@ -111,6 +130,8 @@ export default function Karnataka() {
   </FormControl>
       <TextField id="outlined-basic" label="Search Here" size="small" variant="outlined" value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}/>
+        <TextField id="outlined-basic" label="Search Here" size="small" variant="outlined"/>
+        <TextField id="outlined-basic" label="Search Here" size="small" variant="outlined"/>
         <Button variant="contained" onClick={handleSearch}>Search</Button>
         <TextField id="outlined-basic" label="Enter number of rows" size="small" variant="outlined" value={searchCount}
         onChange={(e) => setSearchCount(e.target.value)}/>
@@ -123,12 +144,18 @@ export default function Karnataka() {
           <TableRow>
             <StyledTableCell style={{ width: 160 }}>Mobile</StyledTableCell>
             <StyledTableCell style={{ width: 160 }}>Customer Name</StyledTableCell>
-            <StyledTableCell style={{ width: 160 }}>Full Name</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>Father's Name</StyledTableCell>
             <StyledTableCell style={{ width: 160 }}>DOB</StyledTableCell>
             <StyledTableCell style={{ width: 160 }}>Address</StyledTableCell>
             <StyledTableCell style={{ width: 160 }}>Per.Address</StyledTableCell>
             <StyledTableCell style={{ width: 160 }}>Altno</StyledTableCell>
             <StyledTableCell style={{ width: 160 }}>Email</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>Pan</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>Photo ID</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>Aadhar</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>Aadhar-1</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>id Proof</StyledTableCell>
+            <StyledTableCell style={{ width: 160 }}>Address Proof</StyledTableCell>
             </TableRow>
       </TableHead>
         <TableBody >
@@ -142,6 +169,12 @@ export default function Karnataka() {
               <StyledTableCell>{item.paddress}</StyledTableCell>
               <StyledTableCell>{item.altno}</StyledTableCell>
               <StyledTableCell>{item.email}</StyledTableCell>
+              <StyledTableCell>{item.pan}</StyledTableCell>
+              <StyledTableCell>{item.photo_id}</StyledTableCell>
+              <StyledTableCell>{item.uid}</StyledTableCell>
+              <StyledTableCell>{item.uid_no}</StyledTableCell>
+              <StyledTableCell>{item.idproof}</StyledTableCell>
+              <StyledTableCell>{item.addproof}</StyledTableCell>
             </StyledTableRow>
           ))}
           </TableBody>

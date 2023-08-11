@@ -18,6 +18,9 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 AWS.config.update({
   accessKeyId: 'AKIAZQ6GO2YKP2WF74FF',
@@ -86,6 +89,19 @@ export default function Hyderabad() {
         <Sidebar/>
         <div className='container'>
             <h1>Hyderabad Search Engine</h1>
+            <RadioGroup
+        row
+        aria-labelledby="demo-row-radio-buttons-group-label"
+        name="row-radio-buttons-group"
+      >
+        <FormControlLabel value="adr1" control={<Radio />} label="Mobile" />
+        <FormControlLabel value="adr3" control={<Radio />} label="Customer Name & Father's Name" />
+        <FormControlLabel value="adr4" control={<Radio />} label="Customer Name & DOB" />
+        <FormControlLabel value="adr5" control={<Radio />} label="Customer Name & Address" />
+        <FormControlLabel value="adr5" control={<Radio />} label="Customer Name & District" />
+        <FormControlLabel value="adr2" control={<Radio />} label="Father Name & District" />
+        <FormControlLabel value="adr2" control={<Radio />} label="Mandal & Village" />
+      </RadioGroup>
             <Box
       component="form"
       sx={{

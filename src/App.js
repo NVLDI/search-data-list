@@ -1,6 +1,7 @@
 import React from 'react';
 import Dashboard from './Components/Dashboard';
 import ExcelData from './State/ExcelData'
+import TNDataLocal from './State/TamilNaduLocal'
 import TN from './State/Tamilnadu'
 import MA from './State/Maharashtra'
 import KA from './State/Karnataka'
@@ -30,6 +31,7 @@ function App() {
                 <Route exact path="/New2020-Hyderabad" element={<New2020HY/>}/>
                 <Route exact path="/tamilnadudata" element={<TN_Data/>}/>
                 <Route exact path="/TNDataVID" element={<TN_Data_VID/>}/>
+                <Route exact path="/TNDataLocal" element={<TNDataLocal/>}/>
             </Routes>
       </Router>
       </div>
