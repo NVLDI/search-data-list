@@ -109,7 +109,7 @@ export default function TamilNaduLocal() {
   const [isTextFieldVisibleDob, setTextFieldVisibleDob] = useState(false);
   const [isTextFieldVisibleName, setTextFieldVisibleName] = useState(false);
 
-  const [selectedOption, setSelectedOption] = useState(null);
+    const [selectedOption, setSelectedOption] = useState(null);
     const [cust_name, setCust_name] = useState('');
     const [dob, setDob] = useState('');
     const [address, setAddress] = useState('');
@@ -117,54 +117,67 @@ export default function TamilNaduLocal() {
     const [voter_id, setVoter_ID] = useState('');
 
     const [searchResults, setSearchResults] = useState([]);
-const [currentPage, setCurrentPage] = useState(1);
-const [resultsPerPage, setResultsPerPage] = useState(10); // Number of results to display per page
-const resultsPerPageOptions = [10, 20, 30]; // Options for results per page
+    const [currentPage, setCurrentPage] = useState(1);
+    const [resultsPerPage, setResultsPerPage] = useState(10); // Number of results to display per page
+    const resultsPerPageOptions = [10, 20, 30]; // Options for results per page
+    const [noRecordsFound, setNoRecordsFound] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
-  const handleSearch = async () => {
+    const handleSearch = async () => {
     
     try {
+      setIsLoading(true);
+      setNoRecordsFound(false);
       if(selectedOption === "cname-c_house_no")
       {
-        const response = await axios.get(`http://localhost:5001/api/cname_AddressSearch?cname=${cust_name}&address=${address}`);
+        const response = await axios.get(`http://192.168.1.4:5001/api/cname_AddressSearch?cname=${cust_name}&address=${address}`);
         setSearchResults(response.data);
         setCurrentPage(1);
+        setNoRecordsFound(response.data.length === 0);
       }
       else if(selectedOption === "voter")
       {
-        const response = await axios.get(`http://localhost:5001/api/voterSearch?voter=${voter_id}`);
+        const response = await axios.get(`http://192.168.1.4:5001/api/voterSearch?voter=${voter_id}`);
         setSearchResults(response.data);
         setCurrentPage(1);
+        setNoRecordsFound(response.data.length === 0);
       }
       else if(selectedOption === "fname_c_house_no")
       {
-        const response = await axios.get(`http://localhost:5001/api/fname_c_house_no?fatherName=${father_name}&address=${address}`);
+        const response = await axios.get(`http://192.168.1.4:5001/api/fname_c_house_no?fatherName=${father_name}&address=${address}`);
         setSearchResults(response.data);
         setCurrentPage(1);
+        setNoRecordsFound(response.data.length === 0);
       }
       else if(selectedOption==="cname_fname")
       {
-        const response = await axios.get(`http://localhost:5001/api/c_fnameSearch?cname=${cust_name}&fatherName=${father_name}`);
+        const response = await axios.get(`http://192.168.1.4:5001/api/c_fnameSearch?cname=${cust_name}&fatherName=${father_name}`);
         setSearchResults(response.data);
         setCurrentPage(1);
+        setNoRecordsFound(response.data.length === 0);
       }
       else if(selectedOption==="c_house_no")
       {
-        const response = await axios.get(`http://localhost:5001/api/c_house_no?address=${address}`);
+        const response = await axios.get(`http://192.168.1.4:5001/api/c_house_no?address=${address}`);
         setSearchResults(response.data);
         setCurrentPage(1);
+        setNoRecordsFound(response.data.length === 0);
       }
       else if(selectedOption==="cname_dob")
       {
-        const response = await axios.get(`http://localhost:5001/api/cname_dob?cname=${cust_name}&DOB=${dob}`);
+        const response = await axios.get(`http://192.168.1.4:5001/api/cname_dob?cname=${cust_name}&DOB=${dob}`);
         setSearchResults(response.data);
         setCurrentPage(1);
+        setNoRecordsFound(response.data.length === 0);
       }
       else{
         alert('You havent select what kind of search need to go...')
       }
     } catch (error) {
         console.error('Other Error:', error);
+    }
+    finally {
+      setIsLoading(false);
     }
   };
   const indexOfLastResult = currentPage * resultsPerPage;
@@ -190,6 +203,7 @@ const resultsPerPageOptions = [10, 20, 30]; // Options for results per page
     setSelectedOption(selectedValue);
     if(selectedValue === "voter")
     {
+      setNoRecordsFound(false);
       setTextFieldVisibleVoter(true);
       setTextFieldVisibleAddress(false);
       setTextFieldVisibleName(false);
@@ -198,6 +212,7 @@ const resultsPerPageOptions = [10, 20, 30]; // Options for results per page
     }
     else if(selectedValue === "cname-c_house_no")
     {
+      setNoRecordsFound(false);
       setTextFieldVisibleAddress(true);
       setTextFieldVisibleName(true);
       setTextFieldVisibleVoter(false);
@@ -206,6 +221,7 @@ const resultsPerPageOptions = [10, 20, 30]; // Options for results per page
     }
     else if(selectedValue === "fname_c_house_no")
     {
+      setNoRecordsFound(false);
       setTextFieldVisibleAddress(true);
       setTextFieldVisibleName(false);
       setTextFieldVisibleVoter(false);
@@ -214,6 +230,7 @@ const resultsPerPageOptions = [10, 20, 30]; // Options for results per page
     }
     else if(selectedValue === "cname_fname")
     {
+      setNoRecordsFound(false);
       setTextFieldVisibleAddress(false);
       setTextFieldVisibleName(true);
       setTextFieldVisibleVoter(false);
@@ -222,6 +239,7 @@ const resultsPerPageOptions = [10, 20, 30]; // Options for results per page
     }
     else if(selectedValue === "c_house_no")
     {
+      setNoRecordsFound(false);
       setTextFieldVisibleAddress(true);
       setTextFieldVisibleName(false);
       setTextFieldVisibleVoter(false);
@@ -230,6 +248,7 @@ const resultsPerPageOptions = [10, 20, 30]; // Options for results per page
     }
     else if(selectedValue === "cname_dob")
     {
+      setNoRecordsFound(false);
       setTextFieldVisibleAddress(false);
       setTextFieldVisibleName(true);
       setTextFieldVisibleVoter(false);
@@ -250,7 +269,14 @@ const resultsPerPageOptions = [10, 20, 30]; // Options for results per page
     // Add more headers for other columns
   ];
   return (
-    <div>
+    <div >
+      {isLoading && (
+        <div className="loading-overlay">
+          <div className="loading-spinner-container">
+            <div className="loading-spinner"></div>
+          </div>
+        </div>
+      )}
          <TopBar/>
         <Sidebar/>
         <div className='container'>
@@ -277,30 +303,38 @@ const resultsPerPageOptions = [10, 20, 30]; // Options for results per page
     >
       {isTextFieldVisibleName && (
        <TextField id="outlined-basic" label="Customer Name" size="small" variant="outlined" value={cust_name}
-        onChange={(e) => setCust_name(e.target.value)}/>
+        onChange={(e) => {setCust_name(e.target.value);
+          setNoRecordsFound(false);}}/>
       )}
        {isTextFieldVisibleDob && (
        <TextField id="outlined-basic" label="DOB (YYYY-MM-DD)" size="small" variant="outlined" InputProps={{
         inputComponent: DateMask,
       }} value={dob}
-        onChange={(e) => setDob(e.target.value)}
+        onChange={(e) => {setDob(e.target.value);
+          setNoRecordsFound(false);}}
         />
        )}
       {isTextFieldVisibleFather && (
        <TextField id="outlined-basic" label="Father's Name" size="small" variant="outlined" value={father_name}
-        onChange={(e) => setFather_name(e.target.value)}/>
+        onChange={(e) => {setFather_name(e.target.value);
+          setNoRecordsFound(false);}}/>
       )}
       {isTextFieldVisibleAddress && (
        <TextField id="outlined-basic" label="Address" size="small" variant="outlined" value={address}  
-        onChange={(e) => setAddress(e.target.value)}/>
+        onChange={(e) => {setAddress(e.target.value);
+          setNoRecordsFound(false);}}/>
       )}
         {isTextFieldVisibleVoter && (
         <TextField id="outlined-basic" label="Voter-ID" size="small" variant="outlined" value={voter_id}  
-        onChange={(e) => setVoter_ID(e.target.value)}/>
+        onChange={(e) => {setVoter_ID(e.target.value);
+          setNoRecordsFound(false);}}/>
         )}
          <Button variant="contained" onClick={handleSearch}>Search</Button>
     </Box>
       <div className='Table-Container'>
+      <div className="pagination">
+      {noRecordsFound && <p className="blinking-text">No record found.</p>}
+      </div>
       <div className="pagination">
         <Button size="small" onClick={handlePrevPage}>&#8592;</Button>
         <div className="page-label">
