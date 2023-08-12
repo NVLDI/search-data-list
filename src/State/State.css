@@ -9,4 +9,35 @@
     margin-top: 20px;
     margin-bottom: 20px;
   }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .pagination button {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    cursor: pointer;
+  }
+  
+  .page-label {
+    font-weight: bold;
+    margin: 0 10px;
+  }
+  
+  .total-rows {
+    margin: 0 10px;
+  }
+  
+  .pagination button.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+  }
+  
   

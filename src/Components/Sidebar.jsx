@@ -72,24 +72,9 @@ export default function Sidebar() {
             <NavText>
             Tamil Nadu
             </NavText>
-            <NavItem eventKey="tamilnadu">
-            <NavText>
-            Tamil Nadu
-            </NavText>
-            </NavItem> 
-            <NavItem eventKey="tamilnadudata">
-            <NavText>
-            Tamil Nadu-Data
-            </NavText>
-            </NavItem> 
-            <NavItem eventKey="TNDataVID">
-            <NavText>
-            Tamil Nadu-Data-VID
-            </NavText>
-            </NavItem> 
             <NavItem eventKey="TNDataLocal">
             <NavText>
-            Tamil Nadu-Data-Local
+            Tamil Nadu
             </NavText>
             </NavItem> 
         </NavItem>
