@@ -108,9 +108,11 @@ export default function TamilNaduLocal() {
   const [isTextFieldVisibleFather, setTextFieldVisibleFather] = useState(false);
   const [isTextFieldVisibleDob, setTextFieldVisibleDob] = useState(false);
   const [isTextFieldVisibleName, setTextFieldVisibleName] = useState(false);
+  const [isTextFieldVisibleMobile, setTextFieldVisibleMobile] = useState(false);
 
     const [selectedOption, setSelectedOption] = useState(null);
     const [cust_name, setCust_name] = useState('');
+    const [mobile,setMobile] = useState('');
     const [dob, setDob] = useState('');
     const [address, setAddress] = useState('');
     const [father_name, setFather_name] = useState('');
@@ -123,6 +125,11 @@ export default function TamilNaduLocal() {
     const [noRecordsFound, setNoRecordsFound] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
+    const indexOfLastResult = currentPage * resultsPerPage;
+    const indexOfFirstResult = indexOfLastResult - resultsPerPage;
+    const currentResults = searchResults.slice(indexOfFirstResult, indexOfLastResult);
+    const totalPages = Math.ceil(searchResults.length / resultsPerPage);
+
     const handleSearch = async () => {
     
     try {
@@ -130,42 +137,49 @@ export default function TamilNaduLocal() {
       setNoRecordsFound(false);
       if(selectedOption === "cname-c_house_no")
       {
-        const response = await axios.get(`http://192.168.1.4:5001/api/cname_AddressSearch?cname=${cust_name}&address=${address}`);
+        const response = await axios.get(`http://localhost:5001/TN-api/cname_AddressSearch?cname=${cust_name}&address=${address}`);
         setSearchResults(response.data);
         setCurrentPage(1);
         setNoRecordsFound(response.data.length === 0);
       }
       else if(selectedOption === "voter")
       {
-        const response = await axios.get(`http://192.168.1.4:5001/api/voterSearch?voter=${voter_id}`);
+        const response = await axios.get(`http://localhost:5001/TN-api/voterSearch?voter=${voter_id}`);
         setSearchResults(response.data);
         setCurrentPage(1);
         setNoRecordsFound(response.data.length === 0);
       }
       else if(selectedOption === "fname_c_house_no")
       {
-        const response = await axios.get(`http://192.168.1.4:5001/api/fname_c_house_no?fatherName=${father_name}&address=${address}`);
+        const response = await axios.get(`http://localhost:5001/TN-api/fname_c_house_no?fatherName=${father_name}&address=${address}`);
         setSearchResults(response.data);
         setCurrentPage(1);
         setNoRecordsFound(response.data.length === 0);
       }
       else if(selectedOption==="cname_fname")
       {
-        const response = await axios.get(`http://192.168.1.4:5001/api/c_fnameSearch?cname=${cust_name}&fatherName=${father_name}`);
+        const response = await axios.get(`http://localhost:5001/TN-api/c_fnameSearch?cname=${cust_name}&fatherName=${father_name}`);
         setSearchResults(response.data);
         setCurrentPage(1);
         setNoRecordsFound(response.data.length === 0);
       }
       else if(selectedOption==="c_house_no")
       {
-        const response = await axios.get(`http://192.168.1.4:5001/api/c_house_no?address=${address}`);
+        const response = await axios.get(`http://localhost:5001/TN-api/c_house_no?address=${address}`);
         setSearchResults(response.data);
         setCurrentPage(1);
         setNoRecordsFound(response.data.length === 0);
       }
       else if(selectedOption==="cname_dob")
       {
-        const response = await axios.get(`http://192.168.1.4:5001/api/cname_dob?cname=${cust_name}&DOB=${dob}`);
+        const response = await axios.get(`http://localhost:5001/TN-api/cname_dob?cname=${cust_name}&DOB=${dob}`);
+        setSearchResults(response.data);
+        setCurrentPage(1);
+        setNoRecordsFound(response.data.length === 0);
+      }
+      else if(selectedOption==="mobile")
+      {
+        const response = await axios.get(`http://localhost:5001/TN-api/mobile?Mobile=${mobile}`);
         setSearchResults(response.data);
         setCurrentPage(1);
         setNoRecordsFound(response.data.length === 0);
@@ -180,11 +194,7 @@ export default function TamilNaduLocal() {
       setIsLoading(false);
     }
   };
-  const indexOfLastResult = currentPage * resultsPerPage;
-  const indexOfFirstResult = indexOfLastResult - resultsPerPage;
-  const currentResults = searchResults.slice(indexOfFirstResult, indexOfLastResult);
-
-  const totalPages = Math.ceil(searchResults.length / resultsPerPage);
+  
 
   const handlePrevPage = () => {
     setCurrentPage(prevPage => Math.max(prevPage - 1, 1));
@@ -209,6 +219,7 @@ export default function TamilNaduLocal() {
       setTextFieldVisibleName(false);
       setTextFieldVisibleFather(false)
       setTextFieldVisibleDob(false);
+      setTextFieldVisibleMobile(false);
     }
     else if(selectedValue === "cname-c_house_no")
     {
@@ -218,6 +229,7 @@ export default function TamilNaduLocal() {
       setTextFieldVisibleVoter(false);
       setTextFieldVisibleFather(false)
       setTextFieldVisibleDob(false);
+      setTextFieldVisibleMobile(false);
     }
     else if(selectedValue === "fname_c_house_no")
     {
@@ -227,6 +239,7 @@ export default function TamilNaduLocal() {
       setTextFieldVisibleVoter(false);
       setTextFieldVisibleFather(true)
       setTextFieldVisibleDob(false);
+      setTextFieldVisibleMobile(false);
     }
     else if(selectedValue === "cname_fname")
     {
@@ -236,6 +249,7 @@ export default function TamilNaduLocal() {
       setTextFieldVisibleVoter(false);
       setTextFieldVisibleFather(true)
       setTextFieldVisibleDob(false);
+      setTextFieldVisibleMobile(false);
     }
     else if(selectedValue === "c_house_no")
     {
@@ -245,6 +259,7 @@ export default function TamilNaduLocal() {
       setTextFieldVisibleVoter(false);
       setTextFieldVisibleFather(false)
       setTextFieldVisibleDob(false);
+      setTextFieldVisibleMobile(false);
     }
     else if(selectedValue === "cname_dob")
     {
@@ -254,6 +269,17 @@ export default function TamilNaduLocal() {
       setTextFieldVisibleVoter(false);
       setTextFieldVisibleFather(false)
       setTextFieldVisibleDob(true);
+      setTextFieldVisibleMobile(false);
+    }
+    else if(selectedValue === "mobile")
+    {
+      setNoRecordsFound(false);
+      setTextFieldVisibleAddress(false);
+      setTextFieldVisibleName(false);
+      setTextFieldVisibleVoter(false);
+      setTextFieldVisibleFather(false)
+      setTextFieldVisibleDob(false);
+      setTextFieldVisibleMobile(true);
     }
   };
   const csvHeaders = [
@@ -285,7 +311,7 @@ export default function TamilNaduLocal() {
         row
         aria-labelledby="demo-row-radio-buttons-group-label"
         name="row-radio-buttons-group">
-        <FormControlLabel value="mobile" control={<Radio />} label="Mobile" onChange={(e) => setSelectedOption(e.target.value)}/>
+        <FormControlLabel value="mobile" control={<Radio />} label="Mobile" onChange={handleRadioChange}/>
         <FormControlLabel value="fname_c_house_no" control={<Radio />} label="Father's Name & Address" onChange={handleRadioChange}/>
         <FormControlLabel value="c_house_no" control={<Radio />} label="Address" onChange={handleRadioChange}/>
         <FormControlLabel value="cname_dob" control={<Radio />} label="Customer Name & DOB" onChange={handleRadioChange}/>
@@ -301,6 +327,11 @@ export default function TamilNaduLocal() {
       noValidate
       autoComplete="off"
     >
+       {isTextFieldVisibleMobile && (
+       <TextField id="outlined-basic" label="Mobile" size="small" variant="outlined" value={mobile}
+        onChange={(e) => {setMobile(e.target.value);
+          setNoRecordsFound(false);}}/>
+      )}
       {isTextFieldVisibleName && (
        <TextField id="outlined-basic" label="Customer Name" size="small" variant="outlined" value={cust_name}
         onChange={(e) => {setCust_name(e.target.value);
